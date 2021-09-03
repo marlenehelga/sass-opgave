@@ -1,0 +1,125 @@
+
+$mycolor: #EE6644;
+$mycolor2: #FFE900;
+$mycolor3: #090A0C;
+$mycolor4: #3D5A80;
+$width100: 100%;
+
+@mixin border($border-color:$mycolor){
+    border:solid 2px;
+    border-color: $border-color;
+}
+
+@mixin space{
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+@mixin text($font-size: 20px){
+    font-family: Arial, Helvetica, sans-serif;
+    color:$mycolor3;
+    font-weight: 100;
+    font-size: $font-size;
+    line-height: 25px;
+}
+@mixin overskift  {
+    text-align: center;
+    color: $mycolor;
+    @include space;
+}
+@mixin kolonner($column: 2){
+    column-count: $column;
+    column-gap: 30px;
+    column-rule: 2px solid $mycolor;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+@mixin flex-box {
+    width:$width100;
+    display: flex;
+    justify-content: space-around;
+    @include space;
+}
+@mixin navigation {
+    overflow: hidden;
+    background-color: $mycolor;
+    list-style: none;
+    width:$width100;
+    height: 60px;  
+}
+@mixin indmadnav{
+    float: left;
+    display: inline;
+    text-align: center;
+    padding: 20px 20px;
+    text-decoration: none;
+}
+*{
+    margin:auto;
+}
+body{
+    background-color: mix($mycolor3, $mycolor4, 10%);
+}
+h1{
+    @include text(100px);
+    @include overskift;
+    @include space;}
+
+
+.navbar{
+    @include navigation;
+    
+    a{
+        @include indmadnav;
+        @include text;
+        
+        &:hover{
+            background:$mycolor2;
+            
+        }
+    }
+}
+h2, h3{
+    @include text(45px);
+    @include overskift;
+}
+h4{
+    @include text(30px);
+    @include overskift;
+}
+.paragraf{
+    @include text;
+    @include kolonner;
+}
+.bil-container{
+    @include flex-box;
+    @include text;
+
+    .film{
+        @include border;
+        width: 750px;
+        height: 900px;
+            &:hover{
+                @include border($mycolor2);
+                }
+    img{
+        width: $width100
+        }       
+        }
+}
+.footer {
+    @include navigation;
+ul{
+   list-style: none;
+    a {
+        @include text(15px);
+        @include indmadnav;
+    }
+}
+p{
+    @include text(15px);
+    @include indmadnav;
+    float: right;
+}
+}
+
+
